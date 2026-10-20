@@ -1,0 +1,95 @@
+{
+  "name": "nirvanapilot",
+  "displayName": "NirvanaPilot",
+  "description": "An idle-time local AI simulator for future architectural risks.",
+  "version": "0.1.0",
+  "publisher": "nirvanapilot",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "files": [
+    "out/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "nirvanapilot.nirvanapilot",
+        "name": "nirvanapilot",
+        "fullName": "NirvanaPilot",
+        "description": "A patient local-model partner for counterfactual architecture simulations.",
+        "commands": [
+          {
+            "name": "incubate",
+            "description": "Show the most recent idle-time simulation or run one now."
+          },
+          {
+            "name": "simulate",
+            "description": "Force a fresh architectural anomaly simulation."
+          },
+          {
+            "name": "status",
+            "description": "Check local Ollama and Gemma model health."
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "nirvanapilot.applySimulation",
+        "title": "Apply NirvanaPilot Simulation Patch"
+      },
+      {
+        "command": "nirvanapilot.showLedger",
+        "title": "Show NirvanaPilot Cost Ledger"
+      }
+    ],
+    "configuration": {
+      "title": "NirvanaPilot",
+      "properties": {
+        "nirvanapilot.ollamaEndpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Base URL of the local Ollama service."
+        },
+        "nirvanapilot.model": {
+          "type": "string",
+          "default": "gemma2:9b",
+          "description": "Ollama model used for counterfactual simulations."
+        },
+        "nirvanapilot.cloudInputPricePerMillion": {
+          "type": "number",
+          "default": 2.5,
+          "minimum": 0,
+          "description": "Comparison-only hosted input price in USD per million tokens."
+        },
+        "nirvanapilot.cloudOutputPricePerMillion": {
+          "type": "number",
+          "default": 10,
+          "minimum": 0,
+          "description": "Comparison-only hosted output price in USD per million tokens."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/vscode": "^1.99.0",
+    "typescript": "^5.8.2"
+  }
+}
